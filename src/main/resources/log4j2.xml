@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%-5level %d{yy-MM-dd HH:mm:SSS}[%thread] %30logger[%method:%line] - %msg%n" />
+		</Console>
+	</Appenders>
+
+	<loggers>
+		<Root level="INFO" additivity="false">
+			<AppenderRef ref="console" />
+		</Root>
+
+		<!-- log4j2 -->
+		<logger name="log4jdbc.log4j2" level="error" additivity="false">
+			<appender-ref ref="console" />
+		</logger>
+
+		<!-- QUERY LOG -->
+		<!-- query + time -->
+		<logger name="jdbc.sqltiming" additivity="false" level="INFO">
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="jdbc.sqlonly" level="off" />
+<!-- 
+		<logger name="jdbc.sqlonly" additivity="false" level="INFO">
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="jdbc.sqltiming" level="off" />
+ -->
+		<!-- RESULTSET TABLE -->
+		<logger name="jdbc.resultsettable" additivity="false" level="INFO">
+			<appender-ref ref="console" />
+		</logger>
+
+
+		<!-- 전체 로그 ( 양 상당히 많아짐 ) -->
+		<logger name="jdbc.audit" level="off" />
+
+		<!-- resultsettable + resultset (parameter) -->
+		<logger name="jdbc.resultset" level="off" />
+
+		<!-- connection log -->
+		<logger name="jdbc.connection" level="off" />
+
+		<logger name="com.console" level="INFO" additivity="false">
+			<AppenderRef ref="console" />
+		</logger>
+	</loggers>
+</Configuration>
